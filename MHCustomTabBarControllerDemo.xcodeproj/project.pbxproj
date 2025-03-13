@@ -250,6 +250,9 @@
 					64D52C961C526E4100386742 = {
 						CreatedOnToolsVersion = 7.2;
 					};
+					C5E8BBE9173BA58C00F2C540 = {
+						DevelopmentTeam = ZNCGWW299S;
+					};
 				};
 			};
 			buildConfigurationList = C5E8BBE5173BA58C00F2C540 /* Build configuration list for PBXProject "MHCustomTabBarControllerDemo" */;
@@ -257,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = C5E8BBE1173BA58C00F2C540;
@@ -381,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = MHCustomTabBarController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = MHCustomTabBarController/MHCustomTabBarController.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -416,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = MHCustomTabBarController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = MHCustomTabBarController/MHCustomTabBarController.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -517,10 +521,11 @@
 		C5E8BC0E173BA58D00F2C540 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = ZNCGWW299S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MHCustomTabBarControllerDemo/MHCustomTabBarControllerDemo-Prefix.pch";
 				INFOPLIST_FILE = "MHCustomTabBarControllerDemo/MHCustomTabBarControllerDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.mhaddl.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,10 +537,11 @@
 		C5E8BC0F173BA58D00F2C540 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = ZNCGWW299S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MHCustomTabBarControllerDemo/MHCustomTabBarControllerDemo-Prefix.pch";
 				INFOPLIST_FILE = "MHCustomTabBarControllerDemo/MHCustomTabBarControllerDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.mhaddl.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
