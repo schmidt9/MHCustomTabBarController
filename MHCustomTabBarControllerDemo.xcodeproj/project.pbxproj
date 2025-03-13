@@ -10,8 +10,6 @@
 		64349D971C5917CC009DAAB5 /* MHCustomTabBarControllerUmbrellaHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6432A1091C58C676009FAEAE /* MHCustomTabBarControllerUmbrellaHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64349D981C5917DB009DAAB5 /* MHCustomTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = C5E8BC11173BA5BC00F2C540 /* MHCustomTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64349D991C5917F8009DAAB5 /* MHCustomTabBarController.modulemap in Headers */ = {isa = PBXBuildFile; fileRef = 6432A10A1C58C703009FAEAE /* MHCustomTabBarController.modulemap */; settings = {ATTRIBUTES = (Public, ); }; };
-		64D52C9E1C526E4100386742 /* MHCustomTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D52C971C526E4100386742 /* MHCustomTabBarController.framework */; };
-		64D52C9F1C526E4100386742 /* MHCustomTabBarController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64D52C971C526E4100386742 /* MHCustomTabBarController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64D52CA91C526E6100386742 /* MHCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BC12173BA5BC00F2C540 /* MHCustomTabBarController.m */; };
 		64D52CAA1C526E6100386742 /* MHTabBarSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = C5E8BC13173BA5BC00F2C540 /* MHTabBarSegue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64D52CAB1C526E6100386742 /* MHTabBarSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BC14173BA5BC00F2C540 /* MHTabBarSegue.m */; };
@@ -27,31 +25,10 @@
 		C5E8BC07173BA58C00F2C540 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5E8BC05173BA58C00F2C540 /* MainStoryboard.storyboard */; };
 		C5E8BC15173BA5BC00F2C540 /* MHCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BC12173BA5BC00F2C540 /* MHCustomTabBarController.m */; };
 		C5E8BC16173BA5BC00F2C540 /* MHTabBarSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BC14173BA5BC00F2C540 /* MHTabBarSegue.m */; };
+		CE95D3CF2D8359CF002C4BF4 /* MyTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95D3CE2D8359CF002C4BF4 /* MyTabViewController.m */; };
+		CE95D3D02D8359CF002C4BF4 /* MyTabViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = CE95D3CD2D8359CF002C4BF4 /* MyTabViewController.h */; };
+		CE95D3D12D8359CF002C4BF4 /* MyTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95D3CE2D8359CF002C4BF4 /* MyTabViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		64D52C9C1C526E4100386742 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5E8BBE2173BA58C00F2C540 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 64D52C961C526E4100386742;
-			remoteInfo = MHCustomTabBarController;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		64D52CA31C526E4100386742 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				64D52C9F1C526E4100386742 /* MHCustomTabBarController.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6432A0FF1C58C613009FAEAE /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
@@ -78,6 +55,8 @@
 		C5E8BC12173BA5BC00F2C540 /* MHCustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCustomTabBarController.m; sourceTree = "<group>"; };
 		C5E8BC13173BA5BC00F2C540 /* MHTabBarSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarSegue.h; sourceTree = "<group>"; };
 		C5E8BC14173BA5BC00F2C540 /* MHTabBarSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarSegue.m; sourceTree = "<group>"; };
+		CE95D3CD2D8359CF002C4BF4 /* MyTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTabViewController.h; sourceTree = "<group>"; };
+		CE95D3CE2D8359CF002C4BF4 /* MyTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTabViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +73,6 @@
 			files = (
 				C5E8BBEE173BA58C00F2C540 /* UIKit.framework in Frameworks */,
 				C5E8BBF0173BA58C00F2C540 /* Foundation.framework in Frameworks */,
-				64D52C9E1C526E4100386742 /* MHCustomTabBarController.framework in Frameworks */,
 				C5E8BBF2173BA58C00F2C540 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +152,8 @@
 			children = (
 				C5E8BC11173BA5BC00F2C540 /* MHCustomTabBarController.h */,
 				C5E8BC12173BA5BC00F2C540 /* MHCustomTabBarController.m */,
+				CE95D3CD2D8359CF002C4BF4 /* MyTabViewController.h */,
+				CE95D3CE2D8359CF002C4BF4 /* MyTabViewController.m */,
 				C5E8BC13173BA5BC00F2C540 /* MHTabBarSegue.h */,
 				C5E8BC14173BA5BC00F2C540 /* MHTabBarSegue.m */,
 				64D52C9B1C526E4100386742 /* Info.plist */,
@@ -192,6 +172,7 @@
 			files = (
 				64D52CAA1C526E6100386742 /* MHTabBarSegue.h in Headers */,
 				64349D971C5917CC009DAAB5 /* MHCustomTabBarControllerUmbrellaHeader.h in Headers */,
+				CE95D3D02D8359CF002C4BF4 /* MyTabViewController.h in Headers */,
 				64349D981C5917DB009DAAB5 /* MHCustomTabBarController.h in Headers */,
 				64349D991C5917F8009DAAB5 /* MHCustomTabBarController.modulemap in Headers */,
 			);
@@ -226,12 +207,10 @@
 				C5E8BBE7173BA58C00F2C540 /* Frameworks */,
 				C5E8BBE8173BA58C00F2C540 /* Resources */,
 				72854395B7204ECFB9ED468D /* Warn for TODO and FIXME comments */,
-				64D52CA31C526E4100386742 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				64D52C9D1C526E4100386742 /* PBXTargetDependency */,
 			);
 			name = MHCustomTabBarControllerDemo;
 			productName = MHCustomTabBarControllerDemo;
@@ -319,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D52CAB1C526E6100386742 /* MHTabBarSegue.m in Sources */,
+				CE95D3CF2D8359CF002C4BF4 /* MyTabViewController.m in Sources */,
 				64D52CA91C526E6100386742 /* MHCustomTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,20 +309,13 @@
 			files = (
 				C5E8BBFA173BA58C00F2C540 /* main.m in Sources */,
 				C5E8BBFE173BA58C00F2C540 /* AppDelegate.m in Sources */,
+				CE95D3D12D8359CF002C4BF4 /* MyTabViewController.m in Sources */,
 				C5E8BC15173BA5BC00F2C540 /* MHCustomTabBarController.m in Sources */,
 				C5E8BC16173BA5BC00F2C540 /* MHTabBarSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		64D52C9D1C526E4100386742 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 64D52C961C526E4100386742 /* MHCustomTabBarController */;
-			targetProxy = 64D52C9C1C526E4100386742 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C5E8BBF6173BA58C00F2C540 /* InfoPlist.strings */ = {

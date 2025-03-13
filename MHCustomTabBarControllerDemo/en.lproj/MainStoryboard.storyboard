@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Custom Tab Bar Controller-->
+        <!--My Tab View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="MHCustomTabBarController" sceneMemberID="viewController">
+                <viewController id="2" customClass="MyTabViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LNL-s9-Szb"/>
                         <viewControllerLayoutGuide type="bottom" id="WIK-Vu-Nfp"/>
@@ -102,7 +102,7 @@
                                     <constraint firstAttribute="height" constant="40" id="GaN-ul-mb8"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="ERM-MV-G1n" kind="embed" id="7md-rd-G35"/>
+                                    <segue destination="ERM-MV-G1n" kind="embed" identifier="someNonTabViewController" id="7md-rd-G35"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -237,7 +237,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some non-tab panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7q-Os-H4B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some non-tab embedded view controller" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7q-Os-H4B">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>

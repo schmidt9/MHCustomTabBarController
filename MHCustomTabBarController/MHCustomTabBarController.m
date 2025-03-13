@@ -50,28 +50,28 @@ NSString *const kDefaultSegueIdentifier = @"viewController1";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     if (!self.usesTabs) {
         return;
     }
     
     assert(self.buttons || self.segmentedControl);
-
+    
     id sender;
-
+    
     if (self.buttons) {
         sender = self.initialSelectedButton
-            ? self.initialSelectedButton
-            : self.buttons.firstObject;
+        ? self.initialSelectedButton
+        : self.buttons.firstObject;
     } else {
         sender = self.segmentedControl;
     }
-
+    
     if (!self.initialSegueIdentifier) {
         self.initialSegueIdentifier = kDefaultSegueIdentifier;
     }
     
-    if (self.childViewControllers.count < 1) {
+    if (self.childViewControllers.count < 1 || self.containsNonTabViewControllers) {
         [self performSegueWithIdentifier:self.initialSegueIdentifier sender:sender];
     }
 }
@@ -81,6 +81,7 @@ NSString *const kDefaultSegueIdentifier = @"viewController1";
 }
 
 #pragma mark - Segue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
    
     if (!self.usesTabs || ![segue isKindOfClass:[MHTabBarSegue class]]) {
@@ -137,6 +138,7 @@ NSString *const kDefaultSegueIdentifier = @"viewController1";
 }
 
 #pragma mark - Memory Warning
+
 - (void)didReceiveMemoryWarning {
 
     if (!self.usesTabs) {

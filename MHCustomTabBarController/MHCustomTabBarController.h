@@ -45,6 +45,11 @@ extern NSString *const MHCustomTabBarControllerViewControllerAlreadyVisibleNotif
  */
 @property (nonatomic) NSString *initialSegueIdentifier;
 /**
+ * Shows is this view controller contains non-tab chils view controllers (for instance embedded view controllers),
+ * set it in subclass before [super viewWillAppear:] call
+ */
+@property (nonatomic) BOOL containsNonTabViewControllers;
+/**
  * Do not clear previous selection
  */
 @property (nonatomic) BOOL keepsSelection;
