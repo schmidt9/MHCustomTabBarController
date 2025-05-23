@@ -71,7 +71,7 @@ NSString *const kDefaultSegueIdentifier = @"viewController1";
         self.initialSegueIdentifier = kDefaultSegueIdentifier;
     }
     
-    if (self.childViewControllers.count < 1 || self.containsNonTabViewControllers) {
+    if (self.childViewControllers.count == 0 || self.containsNonTabViewControllers) {
         [self performSegueWithIdentifier:self.initialSegueIdentifier sender:sender];
     }
 }
