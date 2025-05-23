@@ -45,11 +45,6 @@ extern NSString *const MHCustomTabBarControllerViewControllerAlreadyVisibleNotif
  */
 @property (nonatomic) NSString *initialSegueIdentifier;
 /**
- * Shows is this view controller contains non-tab chils view controllers (for instance embedded view controllers),
- * set it in subclass before [super viewWillAppear:] call
- */
-@property (nonatomic) BOOL containsNonTabViewControllers;
-/**
  * Do not clear previous selection
  */
 @property (nonatomic) BOOL keepsSelection;
@@ -62,5 +57,10 @@ extern NSString *const MHCustomTabBarControllerViewControllerAlreadyVisibleNotif
  * Defaults to YES, If NO behave as ordinary view controller (not using custom segues logic)
  */
 @property (nonatomic) BOOL usesTabs;
+/**
+ Contains non-tab child view controllers (for instance embedded view controllers), which should not be handled by tabs logic.
+ They can be added for instance in subclass in `- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender`
+ */
+@property (nonatomic) NSArray<UIViewController *> *nonTabViewControllers;
 
 @end

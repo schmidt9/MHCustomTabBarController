@@ -71,7 +71,7 @@ NSString *const kDefaultSegueIdentifier = @"viewController1";
         self.initialSegueIdentifier = kDefaultSegueIdentifier;
     }
     
-    if (self.childViewControllers.count == 0 || self.containsNonTabViewControllers) {
+    if (self.childViewControllers.count == 0 || [self containsNonTabViewControllersOnly]) {
         [self performSegueWithIdentifier:self.initialSegueIdentifier sender:sender];
     }
 }
@@ -153,6 +153,24 @@ NSString *const kDefaultSegueIdentifier = @"viewController1";
     }];
     
     [super didReceiveMemoryWarning];
+}
+
+# pragma mark - Helpers
+
+- (BOOL)containsNonTabViewControllersOnly
+{
+    // Delete all non-tab view controllers
+    NSMutableArray *allChildViewControllers = self.childViewControllers.mutableCopy;
+    
+    for (UIViewController *viewController in self.childViewControllers) {
+        for (UIViewController *nonTabViewController in self.nonTabViewControllers) {
+            if ([viewController isEqual:nonTabViewController]) {
+                [allChildViewControllers removeObject:viewController];
+            }
+        }
+    }
+    
+    return allChildViewControllers.count == 0;
 }
 
 @end

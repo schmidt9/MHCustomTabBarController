@@ -10,10 +10,15 @@
 
 @implementation MyTabViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"%s | segue identifier: %@", __func__, segue.identifier);
     
-    self.containsNonTabViewControllers = YES;
+    if ([segue.identifier isEqualToString:@"someNonTabViewController"]) {
+        self.nonTabViewControllers = @[segue.destinationViewController];
+    }
+    
+    [super prepareForSegue:segue sender:sender];
 }
 
 @end
