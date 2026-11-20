@@ -7,12 +7,14 @@
 MHCustomTabBarController is a customizable UITabBarController replacement using Storyboard and segues.
 It's built with Apples Custom Container ViewController API.
 
-The library ships **two equivalent implementations**:
+The library ships **two equivalent implementations**, packaged as two independent pods:
 
-* **Objective-C** (the original) — `MHCustomTabBarController/Swift` is not selected.
-* **Swift 5** — a 1:1 port with the same class names and the same storyboard wiring.
+* **Objective-C** (the original) — pod `MHCustomTabBarController`.
+* **Swift 5** — a 1:1 port — pod `MHCustomTabBarControllerSwift`.
 
-Both variants require **iOS 15.0+** and use the same storyboard setup.
+Both variants require **iOS 15.0+** and use the same storyboard setup. They use different
+Objective-C runtime class names, so both pods can be linked into the same app — for example
+when another pod already depends on the Objective-C variant.
 
 + [MHTabBarController](https://github.com/hollance/MHTabBarController "MHTabBarController") (His initials are also M and H ;))
 + [CustomTabBarExample](http://www.scott-sherwood.com/ios-5-creating-a-custom-side-tabbar-using-storyboards-and-custom-segues/ "CustomTabBarExample")
@@ -22,26 +24,24 @@ Both variants require **iOS 15.0+** and use the same storyboard setup.
 ### Objective-C
 
 ```ruby
-pod 'MHCustomTabBarController'          # default, same as the line below
-pod 'MHCustomTabBarController/ObjC'
+pod 'MHCustomTabBarController'
 ```
 
 ### Swift
 
 ```ruby
-pod 'MHCustomTabBarController/Swift'
+pod 'MHCustomTabBarControllerSwift'
 ```
 
-The Swift variant has the same module name as the pod, so import it with:
+The Swift port is a separate pod, so import it with:
 
 ```swift
-import MHCustomTabBarController
+import MHCustomTabBarControllerSwift
 ```
 
-> **Select exactly one subspec.** `ObjC` and `Swift` declare the same Objective-C
-> runtime class names (`MHCustomTabBarController`, `MHTabBarSegue`); installing both
-> into one target produces duplicate classes. A bare `pod 'MHCustomTabBarController'`
-> resolves to the `ObjC` variant, so existing Podfiles are unaffected.
+> The two pods have distinct Objective-C runtime class names, so a Podfile may list both
+> (directly or through another pod that depends on the Objective-C variant). Unlike the
+> former `MHCustomTabBarController/Swift` subspec, there is no duplicate-symbol conflict.
 
 ## Setup
 
@@ -53,10 +53,15 @@ Have a look at the demoproject and do the following steps.
 
 Insert a UIViewController into your storyboard and set the class to "MHCustomTabBarController". Place a UIView (your "UITabBar") into the ViewController. Add UIButtons (your "UITabBarItems") to the view (the buttons must IN the UIView). Add a Container View above (or where you want) to the ViewController.
 
-This works identically for the Objective-C and Swift variants — the class has the same
-name in both, and the Swift class is exposed to Objective-C as
-`@objc(MHCustomTabBarController)`, so the storyboard `customClass` does **not** need a
-`customModule`.
+This works identically for the Objective-C and Swift variants, except that storyboards
+must tell the two same-named classes apart:
+
+* Objective-C variant: `customClass="MHCustomTabBarController"` (no `customModule`).
+* Swift variant: `customClass="MHCustomTabBarController" customModule="MHCustomTabBarControllerSwift"`.
+
+If the controller in the storyboard is your own subclass (the usual case), set the module to
+the one that declares the subclass; the Swift base class module only matters when the
+base class itself is referenced from the storyboard.
 
 ### Hook up the outlets
 
@@ -79,9 +84,9 @@ Place your desired ViewControllers into the storyboard and connect them with a U
 * second ViewController = "viewController2"
 + ...
 
-Set the style of the segues to "custom" and the class to "MHTabBarSegue". As with the
-controller, the Swift segue keeps the Objective-C runtime name `MHTabBarSegue`, so no
-`customModule` is required in either variant.
+Set the style of the segues to "custom" and the class to "MHTabBarSegue". With the Swift
+pod the segue is module-scoped, so set `customModule="MHCustomTabBarControllerSwift"`
+as well; with the Objective-C pod no `customModule` is required.
 
 ## Swift
 
@@ -89,7 +94,7 @@ The Swift implementation is a direct port of the Objective-C one; every public m
 its name:
 
 ```swift
-import MHCustomTabBarController
+import MHCustomTabBarControllerSwift
 
 final class MyTabViewController: MHCustomTabBarController {
 
@@ -116,7 +121,7 @@ Notes:
       queue: .main
   )
   ```
-* The ObjC `extern` constants are not exported by the Swift subspec; use the literals above
+* The ObjC `extern` constants are not exported by the Swift pod; use the literals above
   from Objective-C code that links only the Swift variant.
 * Deprecated container APIs were replaced with `children`/`addChild`/`didMove(toParent:)`.
   The old rotation override is not needed because the segue pins the destination view to the

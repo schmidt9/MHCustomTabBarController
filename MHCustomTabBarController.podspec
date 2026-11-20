@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "MHCustomTabBarController"
-  s.version = "1.4.0"
+  s.version = "1.5.0"
   s.platform = :ios
   s.ios.deployment_target = "15.0"
   s.summary = "Custom UITabBar replacement using storyboard and segues."
@@ -12,25 +12,17 @@ Pod::Spec.new do |s|
   }
   s.source = {
     :git => "https://github.com/schmidt9/MHCustomTabBarController.git",
-    :tag => "v#{s.version}"
+    :tag => "#{s.version}"
   }
 
-  # `swift_versions` is a root-only CocoaPods attribute and cannot be declared
-  # inside a subspec. It has no effect on ObjC-only consumers.
-  s.swift_versions = ["5.0"]
-
-  # A bare `pod 'MHCustomTabBarController'` keeps resolving to the ObjC variant.
-  s.default_subspecs = "ObjC"
-
-  # Objective-C implementation (original library).
-  s.subspec("ObjC") do |ss|
-    ss.source_files = "MHCustomTabBarController/*.{m,h}"
-  end
-
-  # Swift 5 port. Select either this subspec or 'ObjC', not both: the two
-  # variants declare the same ObjC runtime class names.
-  s.subspec("Swift") do |ss|
-    ss.source_files = "MHCustomTabBarControllerSwift/*.swift"
-    ss.pod_target_xcconfig = {"DEFINES_MODULE" => "YES"}
-  end
+  # Objective-C implementation
+  #
+  # The Swift 5 port lives in a separate pod, `MHCustomTabBarControllerSwift`
+  # (MHCustomTabBarControllerSwift.podspec). It is deliberately not a subspec:
+  # another pod may depend on the root spec (`spec.dependency("MHCustomTabBarController")`),
+  # which activates the default subspec. A host app asking for a `Swift` subspec
+  # would then silently compile both implementations into one target. The two pods
+  # can be linked into the same app because their Objective-C runtime class names
+  # are distinct.
+  s.source_files = "MHCustomTabBarController/*.{m,h}"
 end

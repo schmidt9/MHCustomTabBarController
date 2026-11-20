@@ -42,7 +42,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="xXX-v0-qZJ" kind="custom" identifier="viewController1" customClass="MHTabBarSegue" id="QW8-2l-PMI"/>
+                                            <segue destination="xXX-v0-qZJ" kind="custom" identifier="viewController1" customModule="MHCustomTabBarControllerSwift" customClass="MHTabBarSegue" id="QW8-2l-PMI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmM-XD-9ls">
@@ -61,7 +61,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="jIS-Ze-qB0" kind="custom" identifier="viewController2" customClass="MHTabBarSegue" id="rcG-OM-UGh"/>
+                                            <segue destination="jIS-Ze-qB0" kind="custom" identifier="viewController2" customModule="MHCustomTabBarControllerSwift" customClass="MHTabBarSegue" id="rcG-OM-UGh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-ud-eyb">
@@ -80,7 +80,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="y2x-vy-fxV" kind="custom" identifier="viewController3" customClass="MHTabBarSegue" id="MsL-zX-uOc"/>
+                                            <segue destination="y2x-vy-fxV" kind="custom" identifier="viewController3" customModule="MHCustomTabBarControllerSwift" customClass="MHTabBarSegue" id="MsL-zX-uOc"/>
                                         </connections>
                                     </button>
                                 </subviews>

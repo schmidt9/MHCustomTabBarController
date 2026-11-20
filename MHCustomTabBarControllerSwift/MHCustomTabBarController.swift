@@ -37,9 +37,11 @@ public extension Notification.Name {
 
 /// A customizable `UITabBarController` replacement using storyboard and segues.
 ///
-/// The class keeps the Objective-C runtime name `MHCustomTabBarController`, so it can be
-/// referenced from storyboards through `customClass` without a `customModule`.
-@objc(MHCustomTabBarController)
+/// The class deliberately does **not** claim the Objective-C runtime name
+/// `MHCustomTabBarController`; that name belongs to the Objective-C implementation, and
+/// claiming it here would make the two variants produce duplicate symbols when both are
+/// linked into one app. Storyboards must therefore reference this class with the module:
+/// `customClass="MHCustomTabBarController" customModule="MHCustomTabBarControllerSwift"`.
 @objcMembers
 open class MHCustomTabBarController: UIViewController {
 

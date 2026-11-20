@@ -24,9 +24,11 @@ import UIKit
 
 /// Embeds the destination view controller into the source tab bar controller's container.
 ///
-/// The class keeps the Objective-C runtime name `MHTabBarSegue`, so it can be referenced
-/// from storyboards through `customClass` without a `customModule`.
-@objc(MHTabBarSegue)
+/// The class deliberately does **not** claim the Objective-C runtime name `MHTabBarSegue`;
+/// that name belongs to the Objective-C implementation, and claiming it here would make the
+/// two variants produce duplicate symbols when both are linked into one app. Storyboards
+/// must therefore reference this segue with the module:
+/// `customClass="MHTabBarSegue" customModule="MHCustomTabBarControllerSwift"`.
 @objcMembers
 open class MHTabBarSegue: UIStoryboardSegue {
 
