@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "MHCustomTabBarControllerSwift"
-  s.version = "1.5.0"
+  s.version = "1.5.1"
   s.platform = :ios
   s.ios.deployment_target = "15.0"
   s.summary = "Swift 5 port of MHCustomTabBarController (custom UITabBar replacement using storyboard and segues)."

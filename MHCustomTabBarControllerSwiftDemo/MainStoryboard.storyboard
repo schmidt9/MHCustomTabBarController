@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="2">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +20,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODu-xW-Dlh">
-                                <rect key="frame" x="0.0" y="99" width="393" height="663"/>
+                                <rect key="frame" x="0.0" y="158" width="393" height="570"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6w-yK-z8E">
-                                <rect key="frame" x="0.0" y="762" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="728" width="393" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNL-qn-pBt">
                                         <rect key="frame" x="20" y="6" width="73" height="43"/>
@@ -42,11 +42,11 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="xXX-v0-qZJ" kind="custom" identifier="viewController1" customModule="MHCustomTabBarControllerSwift" customClass="MHTabBarSegue" id="QW8-2l-PMI"/>
+                                            <segue destination="xXX-v0-qZJ" kind="custom" identifier="viewController1" customClass="MHTabBarSegueSwift" customModule="MHCustomTabBarControllerSwift" id="QW8-2l-PMI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmM-XD-9ls">
-                                        <rect key="frame" x="161" y="6" width="73" height="43"/>
+                                        <rect key="frame" x="160.66666666666666" y="6" width="73" height="43"/>
                                         <color key="backgroundColor" red="0.078431372550000003" green="0.72549019609999998" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="73" id="9nj-E1-ft3"/>
@@ -61,7 +61,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="jIS-Ze-qB0" kind="custom" identifier="viewController2" customModule="MHCustomTabBarControllerSwift" customClass="MHTabBarSegue" id="rcG-OM-UGh"/>
+                                            <segue destination="jIS-Ze-qB0" kind="custom" identifier="viewController2" customClass="MHTabBarSegueSwift" customModule="MHCustomTabBarControllerSwift" id="rcG-OM-UGh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-ud-eyb">
@@ -80,7 +80,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="y2x-vy-fxV" kind="custom" identifier="viewController3" customModule="MHCustomTabBarControllerSwift" customClass="MHTabBarSegue" id="MsL-zX-uOc"/>
+                                            <segue destination="y2x-vy-fxV" kind="custom" identifier="viewController3" customClass="MHTabBarSegueSwift" customModule="MHCustomTabBarControllerSwift" id="MsL-zX-uOc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -97,7 +97,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qes-Ss-f06">
-                                <rect key="frame" x="0.0" y="59" width="393" height="40"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GaN-ul-mb8"/>
                                 </constraints>
@@ -148,7 +148,7 @@
                         </userGuides>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ViewController 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYT-wH-Lko">
-                                <rect key="frame" x="135" y="416" width="124" height="21"/>
+                                <rect key="frame" x="134.66666666666666" y="415.66666666666669" width="123.99999999999997" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ViewController 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYz-7e-9dJ">
-                                <rect key="frame" x="134" y="416" width="126" height="21"/>
+                                <rect key="frame" x="133.66666666666666" y="415.66666666666669" width="125.99999999999997" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ViewController 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-sK-LtD">
-                                <rect key="frame" x="134" y="416" width="126" height="21"/>
+                                <rect key="frame" x="133.66666666666666" y="415.66666666666669" width="125.99999999999997" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

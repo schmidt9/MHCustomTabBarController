@@ -24,13 +24,12 @@ import UIKit
 
 /// Embeds the destination view controller into the source tab bar controller's container.
 ///
-/// The class deliberately does **not** claim the Objective-C runtime name `MHTabBarSegue`;
-/// that name belongs to the Objective-C implementation, and claiming it here would make the
-/// two variants produce duplicate symbols when both are linked into one app. Storyboards
-/// must therefore reference this segue with the module:
-/// `customClass="MHTabBarSegue" customModule="MHCustomTabBarControllerSwift"`.
-@objcMembers
-open class MHTabBarSegue: UIStoryboardSegue {
+/// Storyboard wiring: for each custom segue set its **Class** to `MHTabBarSegueSwift`
+/// and its **Module** to `MHCustomTabBarControllerSwift`, with
+/// *Inherit Module From Target* unchecked. Otherwise the storyboard compiles the class
+/// into the app's module and the app fails with
+/// `Could not create a segue of class '(null)'`.
+open class MHTabBarSegueSwift: UIStoryboardSegue {
 
     open var replacesOldViewController = false
 
@@ -40,7 +39,7 @@ open class MHTabBarSegue: UIStoryboardSegue {
     }
 
     open override func perform() {
-        guard let tabBarViewController = source as? MHCustomTabBarController,
+        guard let tabBarViewController = source as? MHCustomTabBarControllerSwift,
               let container = tabBarViewController.container,
               let destinationViewController = tabBarViewController.destinationViewController else {
             return

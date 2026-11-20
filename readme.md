@@ -51,17 +51,21 @@ Have a look at the demoproject and do the following steps.
 
 ![](https://raw.github.com/mhaddl/MHCustomTabBarController/screenshots/screenshots/Screenshot%20on%202013-05-09%20at%2017.48.04.png "Create you custom tabbar controller")
 
-Insert a UIViewController into your storyboard and set the class to "MHCustomTabBarController". Place a UIView (your "UITabBar") into the ViewController. Add UIButtons (your "UITabBarItems") to the view (the buttons must IN the UIView). Add a Container View above (or where you want) to the ViewController.
+Insert a UIViewController into your storyboard, place a UIView (your "UITabBar") into the ViewController, add UIButtons (your "UITabBarItems") to the view (the buttons must be IN the UIView), then add a Container View above (or where you want) to the ViewController.
 
-This works identically for the Objective-C and Swift variants, except that storyboards
-must tell the two same-named classes apart:
+Set the controller class to:
 
 * Objective-C variant: `customClass="MHCustomTabBarController"` (no `customModule`).
-* Swift variant: `customClass="MHCustomTabBarController" customModule="MHCustomTabBarControllerSwift"`.
+* Swift variant: `customClass="MHCustomTabBarControllerSwift" customModule="MHCustomTabBarControllerSwift"`.
 
-If the controller in the storyboard is your own subclass (the usual case), set the module to
-the one that declares the subclass; the Swift base class module only matters when the
-base class itself is referenced from the storyboard.
+If the controller in the storyboard is your own subclass (the usual case), set the class and
+module to the subclass instead.
+
+> In the Identity inspector set **Module** to `MHCustomTabBarControllerSwift` and **uncheck
+> "Inherit Module From Target"**. Leaving it checked writes `customModuleProvider="target"`,
+> which overrides `customModule` at compile time with the app's module — the class is then
+> looked up in the app module and the app crashes with
+> `Could not create a segue of class '(null)'` (or logs an unknown class for view controllers).
 
 ### Hook up the outlets
 
@@ -84,9 +88,14 @@ Place your desired ViewControllers into the storyboard and connect them with a U
 * second ViewController = "viewController2"
 + ...
 
-Set the style of the segues to "custom" and the class to "MHTabBarSegue". With the Swift
-pod the segue is module-scoped, so set `customModule="MHCustomTabBarControllerSwift"`
-as well; with the Objective-C pod no `customModule` is required.
+Set the style of the segues to "custom" and the class to:
+
+* Objective-C variant: `customClass="MHTabBarSegue"` (no `customModule`).
+* Swift variant: `customClass="MHTabBarSegueSwift" customModule="MHCustomTabBarControllerSwift"`
+  (and leave *Inherit Module From Target* unchecked, see the note above).
+
+A missing or wrong module here fails on the first segue with
+`Could not create a segue of class '(null)'`.
 
 ## Swift
 
@@ -96,7 +105,7 @@ its name:
 ```swift
 import MHCustomTabBarControllerSwift
 
-final class MyTabViewController: MHCustomTabBarController {
+final class MyTabViewController: MHCustomTabBarControllerSwift {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "someNonTabViewController" {

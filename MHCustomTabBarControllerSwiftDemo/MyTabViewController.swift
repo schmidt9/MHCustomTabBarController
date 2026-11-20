@@ -9,7 +9,7 @@
 import UIKit
 import MHCustomTabBarControllerSwift
 
-final class MyTabViewController: MHCustomTabBarController {
+final class MyTabViewController: MHCustomTabBarControllerSwift {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("%@ | segue identifier: %@", #function, segue.identifier ?? "nil")
