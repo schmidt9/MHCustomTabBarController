@@ -4,21 +4,59 @@
 
 ![](https://raw.github.com/mhaddl/MHCustomTabBarController/screenshots/screenshots/iOS%20Simulator%20Bildschirmfoto%2009.05.2013%2018.24.40.png)
 
-MHCustomTabBarController is a customizable UITabBarController replacement using Storyboard and segues. It's built with Apples Custom Container ViewController API and so requires iOS 6+.
+MHCustomTabBarController is a customizable UITabBarController replacement using Storyboard and segues.
+It's built with Apples Custom Container ViewController API.
 
-+ [MHTabBarController](https://github.com/hollance/MHTabBarController "MHTabBarController") (His initials are also M and H ;)) 
+The library ships **two equivalent implementations**:
+
+* **Objective-C** (the original) — `MHCustomTabBarController/Swift` is not selected.
+* **Swift 5** — a 1:1 port with the same class names and the same storyboard wiring.
+
+Both variants require **iOS 15.0+** and use the same storyboard setup.
+
++ [MHTabBarController](https://github.com/hollance/MHTabBarController "MHTabBarController") (His initials are also M and H ;))
 + [CustomTabBarExample](http://www.scott-sherwood.com/ios-5-creating-a-custom-side-tabbar-using-storyboards-and-custom-segues/ "CustomTabBarExample")
+
+## Installation
+
+### Objective-C
+
+```ruby
+pod 'MHCustomTabBarController'          # default, same as the line below
+pod 'MHCustomTabBarController/ObjC'
+```
+
+### Swift
+
+```ruby
+pod 'MHCustomTabBarController/Swift'
+```
+
+The Swift variant has the same module name as the pod, so import it with:
+
+```swift
+import MHCustomTabBarController
+```
+
+> **Select exactly one subspec.** `ObjC` and `Swift` declare the same Objective-C
+> runtime class names (`MHCustomTabBarController`, `MHTabBarSegue`); installing both
+> into one target produces duplicate classes. A bare `pod 'MHCustomTabBarController'`
+> resolves to the `ObjC` variant, so existing Podfiles are unaffected.
 
 ## Setup
 
-Have a look at the demoporject and do the following steps.
+Have a look at the demoproject and do the following steps.
 
 ### Create your Custom TabBarController
 
 ![](https://raw.github.com/mhaddl/MHCustomTabBarController/screenshots/screenshots/Screenshot%20on%202013-05-09%20at%2017.48.04.png "Create you custom tabbar controller")
 
-Insert a UIViewController into your storyboard and set the class to "MHCustomTabBarController". Place a UIView (your "UITabBar") into the ViewController. Add UIButtons (your "UITabBarItems") to the view (the buttons must IN the UIView). Add a Container View above (or where you want) to the ViewController. 
+Insert a UIViewController into your storyboard and set the class to "MHCustomTabBarController". Place a UIView (your "UITabBar") into the ViewController. Add UIButtons (your "UITabBarItems") to the view (the buttons must IN the UIView). Add a Container View above (or where you want) to the ViewController.
 
+This works identically for the Objective-C and Swift variants — the class has the same
+name in both, and the Swift class is exposed to Objective-C as
+`@objc(MHCustomTabBarController)`, so the storyboard `customClass` does **not** need a
+`customModule`.
 
 ### Hook up the outlets
 
@@ -27,6 +65,10 @@ Hook up the outlets in MHCustomTabBarController with your created views in the s
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 ```
+
+In Swift these outlets are `@IBOutlet weak var container: UIView!` and
+`@IBOutlet var buttons: [UIButton]!` — the property names are unchanged, so the same
+storyboard connections work.
 
 ### Create your ContentViewControllers
 
@@ -37,7 +79,68 @@ Place your desired ViewControllers into the storyboard and connect them with a U
 * second ViewController = "viewController2"
 + ...
 
-Set the style of the segues to "custom" and the class to "MHTabBarSegue".
+Set the style of the segues to "custom" and the class to "MHTabBarSegue". As with the
+controller, the Swift segue keeps the Objective-C runtime name `MHTabBarSegue`, so no
+`customModule` is required in either variant.
+
+## Swift
+
+The Swift implementation is a direct port of the Objective-C one; every public member keeps
+its name:
+
+```swift
+import MHCustomTabBarController
+
+final class MyTabViewController: MHCustomTabBarController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "someNonTabViewController" {
+            nonTabViewControllers = [segue.destination]
+        }
+
+        super.prepare(for: segue, sender: sender)
+    }
+}
+```
+
+Notes:
+
+* `buttons` is `[UIButton]!` (the `IBOutletCollection`), `container` is
+  `UIView!`, `destinationViewController` is `weak`, `selectedIndex` is `private(set)`.
+* The notification constants became `Notification.Name` values. The raw strings are
+  identical to the Objective-C constants, so mixed Objective-C/Swift observers still work:
+  ```swift
+  NotificationCenter.default.addObserver(
+      forName: .MHCustomTabBarControllerViewControllerChanged,
+      object: nil,
+      queue: .main
+  )
+  ```
+* The ObjC `extern` constants are not exported by the Swift subspec; use the literals above
+  from Objective-C code that links only the Swift variant.
+* Deprecated container APIs were replaced with `children`/`addChild`/`didMove(toParent:)`.
+  The old rotation override is not needed because the segue pins the destination view to the
+  container with Auto Layout.
+
+## Demo projects
+
+`MHCustomTabBarControllerDemo.xcodeproj` contains four targets:
+
+| Target | Language | Kind |
+|---|---|---|
+| `MHCustomTabBarController` | Objective-C | framework |
+| `MHCustomTabBarControllerDemo` | Objective-C | app |
+| `MHCustomTabBarControllerSwift` | Swift | framework |
+| `MHCustomTabBarControllerSwiftDemo` | Swift | app |
+
+Shared schemes exist for the ObjC framework (`MHCustomTabBarController`) and for both Swift
+targets. Build or run the Swift demo with:
+
+```bash
+xcodebuild -project MHCustomTabBarControllerDemo.xcodeproj \
+  -scheme MHCustomTabBarControllerSwiftDemo \
+  -destination 'platform=iOS Simulator,name=iPhone 17' build
+```
 
 ## License
 
@@ -62,5 +165,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
